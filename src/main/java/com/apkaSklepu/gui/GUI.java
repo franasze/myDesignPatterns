@@ -3,7 +3,6 @@ package com.apkaSklepu.gui;
 import com.apkaSklepu.core.Authenticator;
 import com.apkaSklepu.database.ProductDB;
 import com.apkaSklepu.database.UserDB;
-import com.apkaSklepu.model.Product;
 import com.apkaSklepu.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -12,8 +11,6 @@ import java.util.Scanner;
 public class GUI {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final Authenticator authenticator = Authenticator.getInstance();
-
     private GUI() {
     }
     public static String showLogMenu(){
@@ -24,6 +21,7 @@ public class GUI {
     }
 
     public static String showMenu(){
+        Authenticator authenticator = Authenticator.getInstance();
         System.out.println("1. Buy product");
         System.out.println("2. Logout");
 
@@ -36,6 +34,7 @@ public class GUI {
     }
 
     public static User readLoginAndPassword(){
+        Authenticator authenticator = Authenticator.getInstance();
         User user = new User();
         System.out.println("Login:");
         user.setLogin(scanner.nextLine());
@@ -65,16 +64,14 @@ public class GUI {
     public static void showProductsList() {
         ProductDB productDB = ProductDB.getInstance();
         System.out.println("Name\t\tPrice\t\t\t Quantity");
-        for (Product product : productDB.getProducts())
-            System.out.println(product);
-        //System.out.println("\n");
+        productDB.getProducts().stream().forEach(System.out::println);
+
     }
     public static void showUsersList(){
         UserDB userDB = UserDB.getInstance();
         System.out.println("Login   Role");
-        for (User user : userDB.getUsers()) {
-            System.out.println(user);
-        }
+        userDB.getUsers().stream().forEach(System.out::println);
+
     }
     public static void showBuyEffect(boolean effect) {
         if (effect) {

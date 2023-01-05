@@ -3,6 +3,8 @@ package com.apkaSklepu.core;
 import com.apkaSklepu.database.UserDB;
 import com.apkaSklepu.model.User;
 
+import java.util.Optional;
+
 public class Authenticator {
 
     UserDB userDB = UserDB.getInstance();
@@ -14,11 +16,11 @@ public class Authenticator {
     }
 
     public void authenticate(User user) {
-        User userFromDB = this.userDB.findByLogin(user.getLogin());
-        if(userFromDB != null &&
-                userFromDB.getPassword().equals(
+        Optional<User> userFromDB = this.userDB.findByLogin(user.getLogin());
+        if(userFromDB.isPresent() &&
+                userFromDB.get().getPassword().equals(
                         (user.getPassword()))) {
-            loggedUser = userFromDB;
+            this.loggedUser = userFromDB.get();
         }
     }
 
@@ -29,7 +31,4 @@ public class Authenticator {
         return instance;
     }
 
-//    public String getSeed() {
-//        return seed;
-//    }
 }

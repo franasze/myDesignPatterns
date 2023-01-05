@@ -1,6 +1,6 @@
 package com.apkaSklepu.model;
 
-public class Cheese extends Product{
+public final class Cheese extends Product{
 
     public Cheese(String brand,int ilosc,String dataWaznosci){
         super(brand, ilosc, dataWaznosci);

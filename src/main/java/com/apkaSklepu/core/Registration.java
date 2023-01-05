@@ -16,8 +16,8 @@ public class Registration {
             newUser = GUI.readLoginAndPassword();
             if(!userDB.ifUserExist(newUser.getLogin()))
                 registered = true;
+            GUI.showEffectRegistration(registered);
         }
-        GUI.showEffectRegistration(registered);
         return newUser;
 
     }

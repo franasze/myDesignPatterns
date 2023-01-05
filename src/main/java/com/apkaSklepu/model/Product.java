@@ -1,6 +1,6 @@
 package com.apkaSklepu.model;
 
- public class Product {
+ public sealed class Product permits Butter,Cheese,Eggs,Mustard,Milk{
 
     private int ilosc;
     private String brand;

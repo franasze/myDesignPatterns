@@ -2,20 +2,24 @@ package com.apkaSklepu.database;
 
 import com.apkaSklepu.model.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class ProductDB {
 
-    private final Product[] products = new Product[5];
-
+    private final List<Product> products = new ArrayList<>();
     private static final ProductDB instance = new ProductDB();
 
     private ProductDB(){
-        this.products[0] = new Butter("Masło",10,"20 days");
-        this.products[1] = new Cheese("Ser",10,"12 days");
-        this.products[2] = new Eggs("Jajka",10,"14 days");
-        this.products[3] = new Milk("Mleko",10,"4 days");
-        this.products[4] = new Mustard("Musztarda",10,"21 days");
+        this.products.add(new Butter("Masło",10,"20 days"));
+        this.products.add(new Cheese("Ser",10,"12 days"));
+        this.products.add(new Eggs("Jajka",10,"14 days"));
+        this.products.add(new Milk("Mleko",10,"4 days"));
+        this.products.add(new Mustard("Musztarda",10,"21 days"));
     }
-    public Product[] getProducts() {
+
+    public List<Product> getProducts() {
         return products;
     }
 
@@ -24,25 +28,25 @@ public class ProductDB {
     }
 
     public boolean buyProduct(String name, int quantity){
-        for(Product product : this.products){
-            if(product.getBrand().equals(name) &&
-                    (quantity >= 0 && quantity <= product.getIlosc())){
-                product.setIlosc(product.getIlosc()-quantity);
-                return true;
-            }
+        Optional<Product> product = this.products.stream()
+                .filter(p->p.getBrand().equals(name)).findFirst();
+
+        if(product.isPresent() && quantity > 0 && product.get()
+                .getIlosc() >= quantity){
+            product.get().setIlosc(product.get().getIlosc() - quantity);
+            return true;
         }
         return false;
     }
     public boolean changeProductQuantity(String name, int quantity){
-        for(Product product : this.products){
-            if(product.getBrand().equals(name) && quantity >= 0 ){
-                product.setIlosc(product.getIlosc()+quantity);
+        Optional<Product> product = this.products.stream()
+                .filter(p->p.getBrand().equals(name)).findAny();
+            if(product.isPresent() && product.get().getBrand().equals(name) && quantity >= 0 ){
+                product.get().setIlosc(product.get().getIlosc()+quantity);
                 return true;
             }
-        }
         return false;
     }
-
 
 
 }

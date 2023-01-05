@@ -38,6 +38,7 @@ public class Core {
                     case "1":
                         GUI.showProductsList();
                         GUI.showBuyEffect(productDB.buyProduct(GUI.readName(),GUI.readQuantity()));
+                        GUI.showProductsList();
                         break;
                     case "2":
                         isRunning = false;
