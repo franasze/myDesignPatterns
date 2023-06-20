@@ -2,8 +2,8 @@ package com.apkaSklepu.model;
 
 public final class Eggs extends Product{
 
-    public Eggs(String brand,int ilosc,String dataWaznosci){
-        super(brand, ilosc, dataWaznosci);
+    public Eggs(String brand,int quantity,String dataWaznosci){
+        super(brand, quantity, dataWaznosci);
     }
 
     @Override

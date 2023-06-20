@@ -2,26 +2,23 @@ package com.apkaSklepu.model;
 
  public sealed class Product permits Butter,Cheese,Eggs,Mustard,Milk{
 
-    private int ilosc;
+    private int quantity;
     private String brand;
     private String dataWaznosci;
 
-    public Product(String brand,int ilosc,String dataWaznosci){
+    public Product(String brand,int quantity,String dataWaznosci){
         this.brand = brand;
-        this.ilosc = ilosc;
+        this.quantity = quantity;
         this.dataWaznosci = dataWaznosci;
     }
 
-    public Product(){
 
+    public int getQuantity() {
+        return quantity;
     }
 
-    public int getIlosc() {
-        return ilosc;
-    }
-
-    public void setIlosc(int ilosc) {
-        this.ilosc = ilosc;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getBrand() {
@@ -44,7 +41,7 @@ package com.apkaSklepu.model;
         return new StringBuilder()
                 .append(this.getBrand())
                 .append(",     ")
-                .append(this.getIlosc())
+                .append(this.getQuantity())
                 .append(" products left, expires in ")
                 .append(this.getDataWaznosci())
                 .toString();

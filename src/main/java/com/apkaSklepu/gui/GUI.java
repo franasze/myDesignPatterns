@@ -64,13 +64,13 @@ public class GUI {
     public static void showProductsList() {
         ProductDB productDB = ProductDB.getInstance();
         System.out.println("Name\t\tPrice\t\t\t Quantity");
-        productDB.getProducts().stream().forEach(System.out::println);
+        productDB.getProducts().forEach(System.out::println);
 
     }
     public static void showUsersList(){
         UserDB userDB = UserDB.getInstance();
         System.out.println("Login   Role");
-        userDB.getUsers().stream().forEach(System.out::println);
+        userDB.getUsers().forEach(System.out::println);
 
     }
     public static void showBuyEffect(boolean effect) {

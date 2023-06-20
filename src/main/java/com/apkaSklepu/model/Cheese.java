@@ -2,18 +2,12 @@ package com.apkaSklepu.model;
 
 public final class Cheese extends Product{
 
-    public Cheese(String brand,int ilosc,String dataWaznosci){
-        super(brand, ilosc, dataWaznosci);
+    public Cheese(String brand,int quantity,String dataWaznosci){
+        super(brand, quantity, dataWaznosci);
     }
 
     @Override
     public String toString(){
-        return new StringBuilder()
-                .append(this.getBrand())
-                .append(",       ")
-                .append(this.getIlosc())
-                .append(" products left, expires in ")
-                .append(this.getDataWaznosci())
-                .toString();
+        return super.toString();
     }
 }

@@ -22,11 +22,6 @@ public class UserDB {
     }
 
     public Optional<User> findByLogin(String login) {
-//        for (User user : this.users) {
-//            if (user.getLogin().equals(login)) {
-//                return user;
-//            }
-//        }
         return this.users.stream().filter(u->u.getLogin().equals(login))
                 .findFirst();
     }
