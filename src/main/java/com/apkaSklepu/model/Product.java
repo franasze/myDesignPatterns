@@ -4,12 +4,12 @@ package com.apkaSklepu.model;
 
     private int quantity;
     private String brand;
-    private String dataWaznosci;
+    private String expirationDate;
 
-    public Product(String brand,int quantity,String dataWaznosci){
+    public Product(String brand,int quantity,String expirationDate){
         this.brand = brand;
         this.quantity = quantity;
-        this.dataWaznosci = dataWaznosci;
+        this.expirationDate = expirationDate;
     }
 
 
@@ -29,12 +29,12 @@ package com.apkaSklepu.model;
         this.brand = brand;
     }
 
-    public String getDataWaznosci() {
-        return dataWaznosci;
+    public String getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setDataWaznosci(String dataWaznosci) {
-        this.dataWaznosci = dataWaznosci;
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public String toString(){
@@ -43,7 +43,7 @@ package com.apkaSklepu.model;
                 .append(",     ")
                 .append(this.getQuantity())
                 .append(" products left, expires in ")
-                .append(this.getDataWaznosci())
+                .append(this.getExpirationDate())
                 .toString();
     }
 }

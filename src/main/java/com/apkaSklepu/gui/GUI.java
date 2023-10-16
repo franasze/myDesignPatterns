@@ -14,9 +14,13 @@ public class GUI {
     private GUI() {
     }
     public static String showLogMenu(){
-        System.out.println("1.Registration");
-        System.out.println("2.Login");
-        System.out.println("3. Exit");
+        String menu = """
+                   1.Registration
+                   2.Login
+                   3.Exit
+                    """;
+        System.out.print(menu);
+
         return scanner.nextLine();
     }
 
@@ -48,7 +52,7 @@ public class GUI {
     }
     public static int readQuantity() {
         System.out.println("Product quantity:");
-        return scanner.nextInt();
+            return scanner.nextInt();
     }
     public static String readUser(){
         System.out.println("User name:");
@@ -65,7 +69,7 @@ public class GUI {
         ProductDB productDB = ProductDB.getInstance();
         System.out.println("Name\t\tPrice\t\t\t Quantity");
         productDB.getProducts().forEach(System.out::println);
-
+        System.out.println("\n");
     }
     public static void showUsersList(){
         UserDB userDB = UserDB.getInstance();

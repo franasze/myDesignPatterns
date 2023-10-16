@@ -2,8 +2,8 @@ package com.apkaSklepu.model;
 
 public final class Mustard extends Product{
 
-    public Mustard(String brand,int quantity,String dataWaznosci){
-        super(brand, quantity, dataWaznosci);
+    public Mustard(String brand,int quantity,String expirationDate){
+        super(brand, quantity, expirationDate);
     }
 
     @Override
@@ -13,7 +13,7 @@ public final class Mustard extends Product{
                 .append(", ")
                 .append(this.getQuantity())
                 .append(" products left, expires in ")
-                .append(this.getDataWaznosci())
+                .append(this.getExpirationDate())
                 .toString();
     }
 }
