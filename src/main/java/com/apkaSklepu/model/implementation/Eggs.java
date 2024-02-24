@@ -1,4 +1,4 @@
-package com.apkaSklepu.model;
+package com.apkaSklepu.model.implementation;
 
 public final class Eggs extends Product{
 

@@ -1,6 +1,6 @@
 package com.apkaSklepu;
 
-import com.apkaSklepu.core.Core;
+import com.apkaSklepu.core.implementation.Core;
 
 public class App {
 

@@ -1,25 +1,26 @@
-package com.apkaSklepu.core;
+package com.apkaSklepu.core.implementation;
 
-import com.apkaSklepu.database.UserDB;
+import com.apkaSklepu.core.IAuthenticator;
+import com.apkaSklepu.database.implementation.UserDB;
 import com.apkaSklepu.exceptions.IncorrectPasswordException;
 import com.apkaSklepu.exceptions.UserNotFoundException;
-import com.apkaSklepu.model.User;
+import com.apkaSklepu.model.IUser;
 
 
 import java.util.Optional;
 
-public class Authenticator {//need to fix
+public class Authenticator implements IAuthenticator {
 
-    private UserDB userDB = UserDB.getInstance();
+    private final UserDB userDB = UserDB.getInstance();
     private static final Authenticator instance = new Authenticator();
-    public User loggedUser = null;
+    public IUser loggedUser = null;
     public final String seed = "12312312312312asdqw1@r";
 
     private Authenticator() {
     }
 
-    public void authenticate(User user) {
-        Optional<User> userFromDB = this.userDB.findByLogin(user.getLogin());
+    public void authenticate(IUser user) {
+        Optional<IUser> userFromDB = userDB.findByLogin(user.getLogin());
 
         if(userFromDB.isEmpty()){
             throw new UserNotFoundException();

@@ -1,6 +1,6 @@
 package com.apkaSklepu.hashowanie;
 
-import com.apkaSklepu.core.Authenticator;
+import com.apkaSklepu.core.implementation.Authenticator;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class PassHash {
